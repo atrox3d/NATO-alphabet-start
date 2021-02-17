@@ -23,5 +23,18 @@ for (index, row) in student_data_frame.iterrows():
 
 # TODO 1. Create a dictionary in this format:
 {"A": "Alfa", "B": "Bravo"}
+phonetic_df = pandas.read_csv("nato_phonetic_alphabet.csv")
+
+# import json
+# print(json.dumps(phonetic_df.to_dict(), indent=4))
+
+# for index, row in phonetic_df.iterrows():
+#     print(row.letter, row.code)
+nato = {row.letter: row.code for index, row in phonetic_df.iterrows()}
+# print(json.dumps(nato, indent=4))
 
 # TODO 2. Create a list of the phonetic code words from a word that the user inputs.
+print("NATO Alphabet word encoder.")
+user_input = input("insert word to encode: ")
+nato_list = [nato[char.upper()] for char in user_input]
+print(nato_list)
